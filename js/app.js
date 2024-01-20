@@ -1,4 +1,25 @@
+// -------------------- Constants -------------------------
+
 balls = document.querySelectorAll("div.ball")
+
+
+// ---------------------Variables -------------------------
+
+ballObjects = [
+  {id:"1", weight: 1, active: false },
+  {id:"2", weight: 1, active: false },
+  {id:"3", weight: 1, active: false },
+  {id:"4", weight: 1, active: false },
+  {id:"5", weight: 1, active: false },
+  {id:"6", weight: 1, active: false },
+  {id:"7", weight: 1, active: false },
+  {id:"8", weight: 1, active: false },
+  {id:"9", weight: 1, active: false },
+  {id:"10", weight: 1, active: false },
+  {id:"11", weight: 1, active: false },
+  {id:"12", weight: 1, active: false }
+]
+
 
 makeBallsDraggable(balls)
 
@@ -20,9 +41,11 @@ function dragElement(elmnt) {
 
 function dragMouseDown(e) {
   e = e || window.event;
+  console.log("we're dragging!")
   e.preventDefault();
   pos3 = e.clientX;
   pos4 = e.clientY;
+  trackActiveBall(e.target.id)
   document.onmouseup = closeDragElement;
   document.onmousemove = elementDrag;
 }
@@ -42,4 +65,10 @@ function closeDragElement() {
   document.onmouseup = null;
   document.onmousemove = null;
   }
+}
+
+function trackActiveBall(ballId) {
+  let activeBall = ballObjects.find(ball => ball.id === ballId.match(/(\d+)/)[0]);
+    activeBall.active = true
+  console.log(activeBall.active)
 }
