@@ -23,15 +23,13 @@
 }
 
 #unused-balls {
-  display: grid;
-  grid-template-rows: repeat(2, 17vh);
-  grid-template-columns: repeat(6, 13vw);
-  justify-content: center;
+  display: flex;
+  /* justify-content: center; */
   justify-items: center;
   align-items: center;
   background-color: grey;
-  width: 80vw;
-  height: 35vh;
+  width: 90vw;
+  height: 20vh;
   position: fixed;
   bottom: 0;
   right:10vw;
@@ -40,9 +38,9 @@
 .ball {
   position: absolute;
   background-color: blueviolet;
-  height: 12vh;
-  width: 12vh;
-  border-radius: 6vh;
+  height: 7vw;
+  width: 7vw;
+  border-radius: 3.5vw;
   text-align: center;
   color: aliceblue;
 }

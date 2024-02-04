@@ -6,22 +6,40 @@ balls = document.querySelectorAll("div.ball")
 // ---------------------Variables -------------------------
 
 ballObjects = [
-  {id:"1", weight: 1, active: false },
-  {id:"2", weight: 1, active: false },
-  {id:"3", weight: 1, active: false },
-  {id:"4", weight: 1, active: false },
-  {id:"5", weight: 1, active: false },
-  {id:"6", weight: 1, active: false },
-  {id:"7", weight: 1, active: false },
-  {id:"8", weight: 1, active: false },
-  {id:"9", weight: 1, active: false },
-  {id:"10", weight: 1, active: false },
-  {id:"11", weight: 1, active: false },
-  {id:"12", weight: 1, active: false }
+  {id:"1", weight: 1, active: false},
+  {id:"2", weight: 1, active: false},
+  {id:"3", weight: 1, active: false},
+  {id:"4", weight: 1, active: false},
+  {id:"5", weight: 1, active: false},
+  {id:"6", weight: 1, active: false},
+  {id:"7", weight: 1, active: false},
+  {id:"8", weight: 1, active: false},
+  {id:"9", weight: 1, active: false},
+  {id:"10", weight: 1, active: false},
+  {id:"11", weight: 1, active: false},
+  {id:"12", weight: 1, active: false}
 ]
+
+basket1Balls = []
+basket2Balls = []
+
+// ---------------------- Event Listeners ---------------------
+
+
+
+// ----------------------- Functions --------------------------
+
 
 
 makeBallsDraggable(balls)
+
+positionBalls(balls)
+
+function positionBalls(balls) {
+  balls.forEach((ball) => {
+    ball.style.left = `${(ball.id.match(/(\d+)/)[0] - 0.7) * 7.15}vw`;
+  })
+}
 
 function makeBallsDraggable(balls) {
   balls.forEach((ball) => {
@@ -30,7 +48,6 @@ function makeBallsDraggable(balls) {
 }
 
 function dragElement(elmnt) {
-  console.log(elmnt)
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "title")) {
     document.getElementById(elmnt.id + "title").onmousedown = dragMouseDown; 
@@ -59,6 +76,7 @@ function elementDrag(e) {
   pos4 = e.clientY;
   elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
   elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  console.log(elmnt.style.left)
 }
 
 function closeDragElement() {
